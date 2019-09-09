@@ -1,5 +1,7 @@
 import 'package:flip_box_bar/flip_box_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_loja/screens/categories.dart';
+import 'package:flutter_loja/screens/home.dart';
 
 class BottomNavBar extends StatefulWidget {
   @override
@@ -14,12 +16,12 @@ class _BottomNavBarState extends State<BottomNavBar> {
     switch (currentIndex) {
       case 0:
         return Container(
-          child: Container(),
+          child: HomePage(),
         );
         break;
       case 1:
         return Container(
-          child: Container(),
+          child: CategoriesPage(),
         );
         break;
       case 2:
@@ -38,21 +40,25 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Column(), //
+      appBar: AppBar(
+        title: Text('E-commerce'),
+        centerTitle: true,
+        backgroundColor: Colors.blueGrey,
+      ),
+      body: _getWidget(), //
       bottomNavigationBar: FlipBoxBar(
         selectedIndex: currentIndex,
         items: [
           FlipBarItem(
-              icon: Icon(Icons.map),
-              text: Text("Map"),
+              icon: Icon(Icons.home),
+              text: Text("Home"),
               frontColor: Colors.blue,
               backColor: Colors.blueAccent),
           FlipBarItem(
-              icon: Icon(Icons.add),
-              text: Text("Add"),
-              frontColor: Colors.cyan,
-              backColor: Colors.cyanAccent),
+              icon: Icon(Icons.category),
+              text: Text("Categorias"),
+              frontColor: Colors.green,
+              backColor: Colors.greenAccent),
           FlipBarItem(
               icon: Icon(Icons.chrome_reader_mode),
               text: Text("Read"),
@@ -63,11 +69,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
               text: Text("Print"),
               frontColor: Colors.purple,
               backColor: Colors.purpleAccent),
-          FlipBarItem(
-              icon: Icon(Icons.print),
-              text: Text("Print"),
-              frontColor: Colors.pink,
-              backColor: Colors.pinkAccent),
         ],
         onIndexChanged: (newIndex) {
           setState(() {
